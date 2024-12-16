@@ -209,9 +209,9 @@ export const Airdrop = () => {
   );
 };
 
-// FAQ Section
+// FAQ Section with proper TypeScript typing
 export const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const faqs = [
     {
