@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'; 
 import { Button } from "@/components/ui/button";
-
+import { Hero2, About,Tokenomics, Airdrop, FAQ } from "@/components/Hero"
 
 export default function Hero() {
   return (
@@ -21,6 +21,11 @@ export default function Hero() {
         </Button>
       </div>
     </section>
+    <Hero2 />
+      <About />
+      <Tokenomics />
+      <Airdrop />
+      <FAQ />
     
     
   </>
