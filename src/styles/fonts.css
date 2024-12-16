@@ -1,13 +1,13 @@
 @font-face {
-    font-family: 'OnlinePrivileges';
-    src: url('fonts/OnlinePrivileges.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: 'OnlinePrivileges';
+  src: url('/fonts/OnlinePrivileges.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: 'Enterpriser';
-  src: url('fonts/Enterpriser.ttf') format('truetype');
+  src: url('/fonts/Enterpriser.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
