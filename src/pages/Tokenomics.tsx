@@ -1,45 +1,50 @@
-'use client'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../components/ui/accordion"
+import React from 'react';
 
-const faqs = [
-  {
-    question: 'What is your SaaS platform?',
-    answer: 'Our SaaS platform is a comprehensive solution designed to streamline your workflow, enhance collaboration, and boost productivity across your organization.',
-  },
-  {
-    question: 'How does pricing work?',
-    answer: 'We offer flexible pricing plans tailored to businesses of all sizes. Our plans are based on the number of users and features required. Contact us for a custom quote.',
-  },
-  {
-    question: 'Is there a free trial available?',
-    answer: 'Yes, we offer a 14-day free trial for all new customers. This allows you to explore our platform and experience its benefits firsthand before committing.',
-  },
-  {
-    question: 'How secure is your platform?',
-    answer: 'Security is our top priority. We use industry-standard encryption, regular security audits, and comply with data protection regulations to ensure your data is safe and secure.',
-  },
-]
-
-export default function Tokenomics() {
+const Tokenomics: React.FC = () => {
   return (
-    <section id="faq" className="py-20 px-6">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-      <div className="max-w-3xl mx-auto">
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger>{faq.question}</AccordionTrigger>
-              <AccordionContent>{faq.answer}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-8">Tokenomics</h1>
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Token Distribution</h2>
+        <ul className="space-y-2">
+          <li>Public Sale: 40%</li>
+          <li>Team and Advisors: 20% (vested over 2 years)</li>
+          <li>Ecosystem Development: 15%</li>
+          <li>Marketing and Partnerships: 10%</li>
+          <li>Reserve: 10%</li>
+          <li>Airdrops and Community Rewards: 5%</li>
+        </ul>
       </div>
-    </section>
-  )
-}
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Token Utility</h2>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Governance voting rights</li>
+          <li>Staking rewards</li>
+          <li>Platform fee discounts</li>
+          <li>Access to exclusive features and services</li>
+        </ul>
+      </div>
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Token Metrics</h2>
+        <ul className="space-y-2">
+          <li>Total Supply: 1,000,000,000 tokens</li>
+          <li>Initial Circulating Supply: 400,000,000 tokens</li>
+          <li>Token Type: ERC-20</li>
+          <li>Initial Token Price: $0.10 USD</li>
+        </ul>
+      </div>
+      <div className="bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-2xl font-semibold mb-4">Vesting Schedule</h2>
+        <p className="mb-4">To ensure long-term alignment of interests:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Team and Advisor tokens: 24-month linear vesting with a 6-month cliff</li>
+          <li>Ecosystem Development tokens: 36-month linear vesting</li>
+          <li>Marketing and Partnership tokens: 12-month linear vesting</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Tokenomics;
 

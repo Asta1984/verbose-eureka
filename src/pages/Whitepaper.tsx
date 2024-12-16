@@ -1,68 +1,41 @@
-'use client';
+import React from 'react';
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Card, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
-
-interface Feature {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-const features: Feature[] = [
-  {
-    title: 'Seamless Integration',
-    description: 'Easily connect with your favorite tools and platforms for a smooth workflow.',
-    icon: '🔗',
-  },
-  {
-    title: 'Advanced Analytics',
-    description: 'Gain valuable insights with our powerful analytics and reporting features.',
-    icon: '📊',
-  },
-  {
-    title: 'Collaboration Tools',
-    description: 'Work together in real-time with our suite of collaboration features.',
-    icon: '👥',
-  },
-  {
-    title: 'Automated Workflows',
-    description: 'Save time and reduce errors with our intelligent automation capabilities.',
-    icon: '⚙️',
-  },
-];
-
-export default function Whitepaper() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
+const Whitepaper: React.FC = () => {
   return (
-    <section id="features" className="py-20 px-6" ref={ref}>
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Our Features</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.2,
-              type: 'spring',
-              stiffness: 100,
-            }}
-          >
-            <Card>
-              <CardHeader>
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <CardTitle>{feature.title}</CardTitle>
-                <CardDescription>{feature.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          </motion.div>
-        ))}
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-8">Whitepaper</h1>
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Executive Summary</h2>
+        <p className="mb-4">Our whitepaper outlines the technical specifications, tokenomics, and roadmap of our revolutionary token project.</p>
+        <a 
+          href="/path-to-whitepaper.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"
+        >
+          Download Full Whitepaper
+        </a>
       </div>
-    </section>
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Key Sections</h2>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Problem Statement and Market Analysis</li>
+          <li>Token Architecture and Technical Specifications</li>
+          <li>Use Cases and Potential Applications</li>
+          <li>Tokenomics and Distribution Model</li>
+          <li>Roadmap and Milestones</li>
+          <li>Team and Advisors</li>
+          <li>Legal and Regulatory Considerations</li>
+        </ul>
+      </div>
+      <div className="bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-2xl font-semibold mb-4">Abstract</h2>
+        <p className="mb-4">Our token leverages cutting-edge blockchain technology to address key challenges in the DeFi space, offering a scalable, secure, and user-friendly solution for decentralized finance applications.</p>
+        <p>By combining innovative smart contract functionality with a robust economic model, we aim to create a token that not only serves as a store of value but also as a utility token powering a wide range of decentralized applications.</p>
+      </div>
+    </div>
   );
-}
+};
+
+export default Whitepaper;
+

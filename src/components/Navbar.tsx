@@ -1,16 +1,17 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet";
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { useWallet } from '@solana/wallet-adapter-react';
 
 export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { publicKey } = useWallet();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,7 +116,7 @@ export default function Navbar() {
             alt="Logo" 
             className='h-8 w-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300'
           />
-          <span className=" font-OnlinePrivileges text-foreground group-hover:text-cyan-500 transition-colors duration-300">
+          <span className="font-OnlinePrivileges text-foreground group-hover:text-cyan-500 transition-colors duration-300">
             V4fluffy</span>
         </Link>
 
@@ -136,13 +137,26 @@ export default function Navbar() {
           ))}
         </div>
 
-    
-        <div className="hidden md:block ">
-        
+        {/* Desktop Wallet Connection */}
+        <div className="hidden md:block">
+          <WalletMultiButton 
+            className="!bg-primary hover:!bg-primary/90 text-white rounded-md"
+          >
+            {publicKey 
+              ? `${publicKey.toBase58().slice(0, 6)}...` 
+              : 'Connect Wallet'}
+          </WalletMultiButton>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center space-x-2">
+          {/* Mobile Wallet Connection */}
+          <WalletMultiButton 
+            className="!bg-primary !text-white !text-sm !px-2 !py-1 rounded-md"
+          >
+            {publicKey ? 'Connected' : 'Wallet'}
+          </WalletMultiButton>
+
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button 
@@ -156,7 +170,7 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent 
               side="right" 
-              className="w-[300px] sm:w-[400px] bg-background"
+              className="w-[300px] sm:w-[400px] bg-background/80"
             >
               <AnimatePresence>
                 {isOpen && (
@@ -181,13 +195,6 @@ export default function Navbar() {
                         {item.label}
                       </Link>
                     ))}
-                    <Button 
-                      asChild 
-                      className="mt-4 w-full hover:bg-cyan-500 hover:text-white transition-colors duration-300"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <Link to="/contact">Connect Wallet</Link>
-                    </Button>
                   </motion.nav>
                 )}
               </AnimatePresence>

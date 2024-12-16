@@ -8,20 +8,32 @@ import {
 
 const faqs = [
   {
-    question: 'What is your SaaS platform?',
-    answer: 'Our SaaS platform is a comprehensive solution designed to streamline your workflow, enhance collaboration, and boost productivity across your organization.',
+    question: "What is the total supply of tokens?",
+    answer: "The total supply of our token is 1 billion (1,000,000,000)."
   },
   {
-    question: 'How does pricing work?',
-    answer: 'We offer flexible pricing plans tailored to businesses of all sizes. Our plans are based on the number of users and features required. Contact us for a custom quote.',
+    question: "When is the token presale?",
+    answer: "The token presale is scheduled to begin on July 1st, 2023, and will last for 30 days."
   },
   {
-    question: 'Is there a free trial available?',
-    answer: 'Yes, we offer a 14-day free trial for all new customers. This allows you to explore our platform and experience its benefits firsthand before committing.',
+    question: "How can I participate in the presale?",
+    answer: "To participate in the presale, you need to join our whitelist by providing your email on the home page. We'll send you detailed instructions closer to the presale date."
   },
   {
-    question: 'How secure is your platform?',
-    answer: 'Security is our top priority. We use industry-standard encryption, regular security audits, and comply with data protection regulations to ensure your data is safe and secure.',
+    question: "What blockchain is the token built on?",
+    answer: "Our token is built on the Ethereum blockchain as an ERC-20 token."
+  },
+  {
+    question: "Is there a vesting period for presale participants?",
+    answer: "Yes, tokens purchased during the presale will have a 6-month vesting period with monthly unlocks."
+  },
+  {
+    question: "What are the use cases for the token?",
+    answer: "Our token can be used for governance voting, staking rewards, platform fee discounts, and accessing exclusive features within our ecosystem."
+  },
+  {
+    question: "How can I store the tokens safely?",
+    answer: "You can store our tokens in any ERC-20 compatible wallet. We recommend using hardware wallets for maximum security."
   },
 ]
 

@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom'; // Use React Router's Link
+import { Link } from 'react-router-dom'; 
 import { Button } from "@/components/ui/button";
-
 
 
 export default function Hero() {
@@ -22,6 +21,8 @@ export default function Hero() {
         </Button>
       </div>
     </section>
+    
+    
   </>
   );
 }

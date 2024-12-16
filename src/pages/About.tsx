@@ -1,68 +1,37 @@
-'use client';
+import React from 'react';
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Card, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
-
-interface Feature {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-const features: Feature[] = [
-  {
-    title: 'Seamless Integration',
-    description: 'Easily connect with your favorite tools and platforms for a smooth workflow.',
-    icon: '🔗',
-  },
-  {
-    title: 'Advanced Analytics',
-    description: 'Gain valuable insights with our powerful analytics and reporting features.',
-    icon: '📊',
-  },
-  {
-    title: 'Collaboration Tools',
-    description: 'Work together in real-time with our suite of collaboration features.',
-    icon: '👥',
-  },
-  {
-    title: 'Automated Workflows',
-    description: 'Save time and reduce errors with our intelligent automation capabilities.',
-    icon: '⚙️',
-  },
-];
-
-export default function About() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
+const About: React.FC = () => {
   return (
-    <section id="features" className="py-20 px-6" ref={ref}>
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Our Features</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.2,
-              type: 'spring',
-              stiffness: 100,
-            }}
-          >
-            <Card>
-              <CardHeader>
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <CardTitle>{feature.title}</CardTitle>
-                <CardDescription>{feature.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          </motion.div>
-        ))}
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-8">About Our Project</h1>
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
+        <p className="mb-4">We aim to revolutionize the decentralized finance space by providing a token that combines security, scalability, and real-world utility.</p>
       </div>
-    </section>
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h2 className="text-2xl font-semibold mb-4">The Team</h2>
+        <ul className="space-y-4">
+          <li>
+            <h3 className="text-xl font-semibold">John Doe - CEO</h3>
+            <p>15+ years of experience in fintech and blockchain</p>
+          </li>
+          <li>
+            <h3 className="text-xl font-semibold">Jane Smith - CTO</h3>
+            <p>Former lead developer at a major cryptocurrency exchange</p>
+          </li>
+          <li>
+            <h3 className="text-xl font-semibold">Mike Johnson - Head of Marketing</h3>
+            <p>Experienced in launching successful ICOs and token sales</p>
+          </li>
+        </ul>
+      </div>
+      <div className="bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-2xl font-semibold mb-4">Our Vision</h2>
+        <p>We envision a future where our token plays a pivotal role in connecting traditional finance with the world of DeFi, creating new opportunities for individuals and businesses alike.</p>
+      </div>
+    </div>
   );
-}
+};
+
+export default About;
+
