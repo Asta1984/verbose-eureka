@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'; // Use React Router's Link
 import { Button } from "@/components/ui/button";
-import { SearchBar } from '@/components/Searchbar';
+
 
 
 export default function Hero() {
   return (
   <>
     <section className="py-20 px-6 text-center">
-      <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-600 mt-10">
+      <h1 className="text-4xl sm:text-5xl font-OnlinePrivileges mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-600 mt-10">
         Revolutionize Your Workflow
       </h1>
       <p className="text-xl mb-4 max-w-2xl mx-auto text-muted-foreground">
@@ -22,7 +22,6 @@ export default function Hero() {
         </Button>
       </div>
     </section>
-    <SearchBar />
   </>
   );
 }

@@ -115,9 +115,8 @@ export default function Navbar() {
             alt="Logo" 
             className='h-8 w-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300'
           />
-          <span className="text-foreground group-hover:text-cyan-500 transition-colors duration-300">
-            SEWANTIKA
-          </span>
+          <span className=" font-OnlinePrivileges text-foreground group-hover:text-cyan-500 transition-colors duration-300">
+            V4fluffy</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -137,14 +136,9 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:block">
-          <Button 
-            asChild 
-            className="hover:bg-cyan-500 hover:text-white transition-colors duration-300"
-          >
-            <Link to="/contact">Connect Wallet</Link>
-          </Button>
+    
+        <div className="hidden md:block ">
+        
         </div>
 
         {/* Mobile Menu Toggle */}

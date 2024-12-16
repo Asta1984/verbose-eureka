@@ -10,7 +10,9 @@ export default {
                 sm: 'calc(var(--radius) - 4px)'
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif']
+                sans: ['Inter', 'sans-serif'],
+                Enterpriser: ['Enterpriser'],
+                OnlinePrivileges: ['OnlinePrivileges'],
             },
             colors: {
                 background: 'hsl(var(--background))',
