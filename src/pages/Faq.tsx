@@ -1,9 +1,18 @@
+import { useState, useEffect } from 'react';
+import { motion} from 'framer-motion';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../components/ui/accordion"
+
+// Font styling utility
+const fontStyles = {
+  heading: "font-[OnlinePrivileges] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight",
+  faqQuestion: "font-[Type_writer] text-lg sm:text-xl font-semibold",
+  faqAnswer: "font-[OnlinePrivileges] text-base sm:text-lg"
+};
 
 const faqs = [
   {
@@ -37,20 +46,51 @@ const faqs = [
 ]
 
 export default function FAQ() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section id="faq" className="py-20 px-6 ">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-      <div className="max-w-3xl mx-auto">
+    <section 
+      id="faq" 
+      className="min-h-screen relative overflow-hidden bg-gray-900 text-white py-20 px-4 sm:px-6 lg:px-8"
+    >
+      {/* Animated Background Gradient */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%)',
+          transform: `translateY(${scrollY * 0.3}px)`
+        }}
+      />
+
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 max-w-3xl mx-auto"
+      >
+        <h2 className={`${fontStyles.heading} text-center mb-12 text-white`}>
+          Frequently Asked Questions
+        </h2>
+
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger>{faq.question}</AccordionTrigger>
-              <AccordionContent>{faq.answer}</AccordionContent>
+              <AccordionTrigger className={`${fontStyles.faqQuestion}`}>
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className={`${fontStyles.faqAnswer}`}>
+                {faq.answer}
+              </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
+      </motion.div>
     </section>
   )
 }
-

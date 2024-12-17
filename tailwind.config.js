@@ -4,7 +4,7 @@ export default {
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
     safelist: [
       {
-        pattern: /OnlinePrivileges|Enterpriser/,
+        pattern: /OnlinePrivileges|Enterpriser|Type_writer|Typewriterbold|Typewriteritalic|Typewriter/,
       },
     ],
     theme: {
@@ -18,6 +18,10 @@ export default {
                 sans: ['Inter', 'sans-serif'],
                 Enterpriser: ['Enterpriser'],
                 OnlinePrivileges: ['OnlinePrivileges'],
+                Type_writer: ['Type_writer'],
+                Typewriterbold: ['Typewriterbold'],
+                Typewriteritalic: ['Typewriteritalic'],
+                Typewriter: ['Typewriter'],
             },
             colors: {
                 background: 'hsl(var(--background))',

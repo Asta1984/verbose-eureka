@@ -11,3 +11,31 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Type_writer';
+  src: url('fonts/type_writer.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Typewriterbold';
+  src: url('fonts/TypewriterzDemoBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Typewriteritalic';
+  src: url('fonts/TypewriterzDemoItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Typewriter';
+  src: url('fonts/TypewriterzDemoRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+

@@ -45,7 +45,8 @@ export default function Navbar() {
       to: "/docs", 
       label: "Docs",
       isActive: location.pathname === "/docs"
-    },    { 
+    },    
+    { 
       to: "/faq", 
       label: "FAQs",
       isActive: location.pathname === "/faq"
@@ -138,7 +139,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Wallet Connection */}
-        <div className="hidden md:block">
+        <div className="hidden md:block ">
           <WalletMultiButton 
             className="!bg-primary hover:!bg-primary/90 text-white rounded-md"
           >
@@ -149,14 +150,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center space-x-2">
-          {/* Mobile Wallet Connection */}
-          <WalletMultiButton 
-            className="!bg-primary !text-white !text-sm !px-2 !py-1 rounded-md"
-          >
-            {publicKey ? 'Connected' : 'Wallet'}
-          </WalletMultiButton>
-
+        <div className="md:hidden flex items-center">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button 
@@ -195,6 +189,17 @@ export default function Navbar() {
                         {item.label}
                       </Link>
                     ))}
+                    
+                    {/* Mobile Wallet Connection - Now inside Sheet */}
+                    <div className="mt-4 w-full">
+                      <WalletMultiButton 
+                        className="!w-full !bg-primary !text-white !text-base !py-2 rounded-md"
+                      >
+                        {publicKey 
+                          ? `${publicKey.toBase58().slice(0, 6)}...` 
+                          : 'Connect Wallet'}
+                      </WalletMultiButton>
+                    </div>
                   </motion.nav>
                 )}
               </AnimatePresence>
