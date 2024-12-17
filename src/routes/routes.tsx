@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 // Import your page components
 import Home from '@/pages/Home';
-import About from '@/pages/About';
+import {About} from '@/pages/About';
 import Whitepaper from '@/pages/Whitepaper';
 import Tokenomics from '@/pages/Tokenomics';
 import Docs from '@/pages/Docs';

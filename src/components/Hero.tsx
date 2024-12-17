@@ -1,64 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Coins, Network, MessageCircleQuestion, Gift, Cpu } from 'lucide-react';
 import { InfiniteScroll } from '@/components/InfiniteScroll';
 import "@/styles/animations.css";
-
-
-// Hero Section
-export const Hero2 = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <div className="h-screen relative overflow-hidden bg-gradient-to-b from-purple-900 to-black">
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundImage: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
-          transform: `translateY(${scrollY * 0.5}px)`
-        }}
-      />
-      <div className="container mx-auto h-full flex items-center relative">
-        <div className="max-w-2xl">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-6xl font-bold text-white mb-6"
-          >
-            Revolutionizing DePIN Networks
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-gray-300 mb-8"
-          >
-            Join the future of decentralized physical infrastructure networks with our groundbreaking protocol
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex gap-4"
-          >
-            <button className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-bold hover:from-purple-700 hover:to-pink-700 transition-colors">
-              Join Presale
-            </button>
-            <button className="px-8 py-3 border border-purple-500 rounded-full text-white font-bold hover:bg-purple-500/20 transition-colors">
-              Claim Airdrop
-            </button>
-          </motion.div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // About Section with Parallax Cards
 export const About = () => {
@@ -72,7 +16,7 @@ export const About = () => {
   </div>
     <div className="min-h-screen bg-black py-20">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-12 text-center">About DePin Protocol</h2>
+        <h2 className="text-4xl font-bold text-white mb-12 text-center">About Protocol</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
@@ -122,7 +66,7 @@ export const Tokenomics = () => {
 
   return (
     <div className="min-h-screen bg-black py-20">
-      <div className="container mx-auto">
+      <div className="container justify-center">
         <h2 className="text-4xl font-bold text-white mb-12 text-center">Tokenomics</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>

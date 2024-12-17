@@ -15,14 +15,14 @@ export function TokenPresaleModal({ isOpen, onClose }: { isOpen: boolean; onClos
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] sm:rounded-3xl sm:bg-black/80 md:rounded-2xl bg-black/80">
         <DialogHeader>
           <DialogTitle>Token Presale</DialogTitle>
           <DialogDescription>
             Participate in our exclusive token presale. Enter the amount of tokens you'd like to purchase.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-4 ">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="amount" className="text-right">
               Amount
@@ -38,7 +38,7 @@ export function TokenPresaleModal({ isOpen, onClose }: { isOpen: boolean; onClos
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right">Price</Label>
-            <div className="col-span-3">0.001 ETH per token</div>
+            <div className="col-span-3">0.001 sol per token</div>
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right">Total</Label>
@@ -48,6 +48,7 @@ export function TokenPresaleModal({ isOpen, onClose }: { isOpen: boolean; onClos
         <DialogFooter>
           <Button onClick={handlePurchase}>Purchase Tokens</Button>
         </DialogFooter>
+        
       </DialogContent>
     </Dialog>
   )

@@ -1,37 +1,66 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { TokenPresaleModal } from '@/components/TokenPresaleModal'
 
-const About: React.FC = () => {
+
+export const About = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
+
+
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-8">About Our Project</h1>
-      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-        <p className="mb-4">We aim to revolutionize the decentralized finance space by providing a token that combines security, scalability, and real-world utility.</p>
+    <div className="h-screen overflow-hidden ">
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
+          transform: `translateY(${scrollY * 0.5}px)`
+        }}
+      />
+      <div className="container mx-auto h-full flex items-center relative">
+        <div className="max-w-2xl">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-6xl font-bold text-white mb-6"
+          >
+            Revolutionizing DePIN Networks
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-gray-300 mb-8"
+          >
+            Join the future of decentralized physical infrastructure networks with our groundbreaking protocol
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="flex gap-4"
+          >
+            <button onClick={openModal} className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-bold hover:from-purple-700 hover:to-pink-700 transition-colors">
+              Join Presale
+            </button>
+            <button className="px-8 py-3 border border-purple-500 rounded-full text-white font-bold hover:bg-purple-500/20 transition-colors">
+              Claim Airdrop
+            </button>
+          </motion.div>
+        </div>
       </div>
-      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4">The Team</h2>
-        <ul className="space-y-4">
-          <li>
-            <h3 className="text-xl font-semibold">John Doe - CEO</h3>
-            <p>15+ years of experience in fintech and blockchain</p>
-          </li>
-          <li>
-            <h3 className="text-xl font-semibold">Jane Smith - CTO</h3>
-            <p>Former lead developer at a major cryptocurrency exchange</p>
-          </li>
-          <li>
-            <h3 className="text-xl font-semibold">Mike Johnson - Head of Marketing</h3>
-            <p>Experienced in launching successful ICOs and token sales</p>
-          </li>
-        </ul>
-      </div>
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4">Our Vision</h2>
-        <p>We envision a future where our token plays a pivotal role in connecting traditional finance with the world of DeFi, creating new opportunities for individuals and businesses alike.</p>
-      </div>
+      <TokenPresaleModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 };
-
-export default About;
-

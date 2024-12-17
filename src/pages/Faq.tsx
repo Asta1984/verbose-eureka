@@ -1,4 +1,3 @@
-'use client'
 import {
   Accordion,
   AccordionContent,
@@ -39,7 +38,7 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-20 px-6">
+    <section id="faq" className="py-20 px-6 ">
       <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
       <div className="max-w-3xl mx-auto">
         <Accordion type="single" collapsible className="w-full">

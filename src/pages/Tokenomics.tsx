@@ -2,9 +2,9 @@ import React from 'react';
 
 const Tokenomics: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto mt-28">
       <h1 className="text-4xl font-bold text-center mb-8">Tokenomics</h1>
-      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+      <div className=" shadow-md rounded-lg p-6 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Token Distribution</h2>
         <ul className="space-y-2">
           <li>Public Sale: 40%</li>
@@ -15,7 +15,7 @@ const Tokenomics: React.FC = () => {
           <li>Airdrops and Community Rewards: 5%</li>
         </ul>
       </div>
-      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+      <div className=" shadow-md rounded-lg p-6 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Token Utility</h2>
         <ul className="list-disc pl-5 space-y-2">
           <li>Governance voting rights</li>
@@ -24,7 +24,7 @@ const Tokenomics: React.FC = () => {
           <li>Access to exclusive features and services</li>
         </ul>
       </div>
-      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+      <div className=" shadow-md rounded-lg p-6 mb-8">
         <h2 className="text-2xl font-semibold mb-4">Token Metrics</h2>
         <ul className="space-y-2">
           <li>Total Supply: 1,000,000,000 tokens</li>
@@ -33,7 +33,7 @@ const Tokenomics: React.FC = () => {
           <li>Initial Token Price: $0.10 USD</li>
         </ul>
       </div>
-      <div className="bg-white shadow-md rounded-lg p-6">
+      <div className=" shadow-md rounded-lg p-6">
         <h2 className="text-2xl font-semibold mb-4">Vesting Schedule</h2>
         <p className="mb-4">To ensure long-term alignment of interests:</p>
         <ul className="list-disc pl-5 space-y-2">
