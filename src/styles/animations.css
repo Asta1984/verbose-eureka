@@ -1,0 +1,14 @@
+@keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(var(--scroll-width));
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll var(--animation-duration) linear infinite;
+  }
+  
+  

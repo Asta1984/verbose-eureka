@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Coins, Network, MessageCircleQuestion, Gift, Cpu } from 'lucide-react';
-
+import { InfiniteScroll } from '@/components/InfiniteScroll';
+import "@/styles/animations.css";
 
 
 // Hero Section
@@ -62,6 +63,13 @@ export const Hero2 = () => {
 // About Section with Parallax Cards
 export const About = () => {
   return (
+    <>
+    <div className="bg-gradient-to-b from-lime-400 to-slate-400">
+    <div className="container mx-auto px-4 py-20">
+      <h1 className="mb-12 text-center text-3xl text-black font-Enterpriser">Our Partners</h1>
+      <InfiniteScroll />
+    </div>
+  </div>
     <div className="min-h-screen bg-black py-20">
       <div className="container mx-auto">
         <h2 className="text-4xl font-bold text-white mb-12 text-center">About DePin Protocol</h2>
@@ -98,6 +106,7 @@ export const About = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

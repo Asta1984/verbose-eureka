@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'; 
 import { Button } from "@/components/ui/button";
 import { Hero2, About,Tokenomics, Airdrop, FAQ } from "@/components/Hero"
+import Footer from '@/components/Footer';
 
 export default function Hero() {
   return (
@@ -26,6 +27,7 @@ export default function Hero() {
       <Tokenomics />
       <Airdrop />
       <FAQ />
+      <Footer />
     
     
   </>
