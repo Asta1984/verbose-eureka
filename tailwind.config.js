@@ -4,7 +4,7 @@ export default {
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
     safelist: [
       {
-        pattern: /OnlinePrivileges|Enterpriser|Type_writer|Typewriterbold|Typewriteritalic|Typewriter/,
+        pattern: /font-(OnlinePrivileges|Enterpriser|Type_writer|Typewriterbold|Typewriteritalic|Typewriter)/,
       },
     ],
     theme: {
@@ -15,13 +15,13 @@ export default {
                 sm: 'calc(var(--radius) - 4px)'
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                Enterpriser: ['Enterpriser'],
-                OnlinePrivileges: ['OnlinePrivileges'],
-                Type_writer: ['Type_writer'],
-                Typewriterbold: ['Typewriterbold'],
-                Typewriteritalic: ['Typewriteritalic'],
-                Typewriter: ['Typewriter'],
+              sans: ['Inter', 'sans-serif'],
+              Enterpriser: ['Enterpriser'],
+              OnlinePrivileges: ['OnlinePrivileges'],
+              Type_writer: ['Type_writer'],
+              Typewriterbold: ['Typewriterbold'],
+              Typewriteritalic: ['Typewriteritalic'],
+              Typewriter: ['Typewriter'],
             },
             colors: {
                 background: 'hsl(var(--background))',

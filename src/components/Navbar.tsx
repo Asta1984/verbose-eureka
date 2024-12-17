@@ -163,47 +163,47 @@ export default function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent 
-  side="right" 
-  className="w-full max-w-[300px] sm:max-w-[400px] bg-background/80 overflow-x-hidden"
->
-  <AnimatePresence>
-    {isOpen && (
-      <motion.nav
-        variants={mobileMenuVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        className="flex flex-col gap-4 mt-8"
-      >
-        {navItems.map((item) => (
-          <Link
-            key={item.to}
-            to={item.to}
-            onClick={() => setIsOpen(false)}
-            className={`text-lg font-semibold transition-colors duration-300 py-2 ${
-              item.isActive 
-                ? 'text-primary ' 
-                : 'text-muted-foreground hover:text-cyan-500'
-            }`}
-          >
-            {item.label}
-          </Link>
-        ))}
+              side="right" 
+              className="w-full max-w-[300px] sm:max-w-[400px] bg-background/80 overflow-x-hidden"
+            >
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.nav
+                    variants={mobileMenuVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    className="flex flex-col gap-4 mt-8"
+                  >
+                    {navItems.map((item) => (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        onClick={() => setIsOpen(false)}
+                        className={`text-lg font-semibold transition-colors duration-300 py-2 ${
+                          item.isActive 
+                            ? 'text-primary ' 
+                            : 'text-muted-foreground hover:text-cyan-500'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
         
-        {/* Mobile Wallet Connection - Now inside Sheet */}
-        <div className="mt-4 w-full">
-          <WalletMultiButton 
-            className="!w-full !bg-primary !text-white !text-base !py-2 rounded-md"
-          >
-            {publicKey 
-              ? `${publicKey.toBase58().slice(0, 6)}...` 
-              : 'Connect Wallet'}
-          </WalletMultiButton>
-        </div>
-      </motion.nav>
-    )}
-  </AnimatePresence>
-</SheetContent>
+                    {/* Mobile Wallet Connection - Now inside Sheet */}
+                    <div className="mt-4 w-full">
+                      <WalletMultiButton 
+                        className="!w-full !bg-primary !text-white !text-base !py-2 rounded-md"
+                      >
+                        {publicKey 
+                          ? `${publicKey.toBase58().slice(0, 6)}...` 
+                          : 'Connect Wallet'}
+                      </WalletMultiButton>
+                    </div>
+                  </motion.nav>
+                )}
+              </AnimatePresence>
+            </SheetContent>
 
           </Sheet>
         </div>
