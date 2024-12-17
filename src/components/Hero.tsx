@@ -17,7 +17,7 @@ export const About = () => {
   return (
     <>
       <div className="bg-gradient-to-b from-lime-400 to-slate-400">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div className="container w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <h1 className={`mb-8 sm:mb-12 text-center text-black ${fontStyles.special}`}>
             Our Partners
           </h1>

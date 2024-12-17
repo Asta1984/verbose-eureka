@@ -144,7 +144,7 @@ export default function Navbar() {
             className="!bg-primary hover:!bg-primary/90 text-white rounded-md"
           >
             {publicKey 
-              ? `${publicKey.toBase58().slice(0, 6)}...` 
+              ? `${publicKey.toBase58().slice(0, 5)}...` 
               : 'Connect Wallet'}
           </WalletMultiButton>
         </div>
@@ -154,8 +154,8 @@ export default function Navbar() {
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button 
-                variant="ghost" 
-                className="text-foreground hover:text-cyan-500 hover:bg-cyan-50 focus:outline-none transition-colors duration-300" 
+                variant="outline" 
+                className="text-foreground hover:text-cyan-500  focus:outline-none transition-colors duration-300" 
                 size="icon"
                 aria-label={isOpen ? "Close menu" : "Open menu"}
               >

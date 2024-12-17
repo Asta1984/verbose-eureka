@@ -15,7 +15,7 @@ const logos: LogoItem[] = [
   {
     id: 2,
     name: "Coinmarketcap",
-    image: "https://catzilla.meme/_next/static/media/coinmarketcap.ed433820y.svg",
+    image: "https://catzilla.meme/_next/static/media/coinmarketcap.ed433820.svg",
   },
   {
     id: 3,

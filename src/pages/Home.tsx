@@ -13,14 +13,14 @@ export default function Hero() {
 
   return (
     <>
-      <section className="py-28 px-6 text-center ">
-        <h1 className="text-4xl sm:text-5xl font-OnlinePrivileges mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-600 mt-10">
+      <section className="py-28 px-6 text-center overflow-x-hidden ">
+        <h1 className="text-2xl sm:text-5xl font-OnlinePrivileges mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-600 md:mt-10">
           Revolution in Decentralization
         </h1>
         <p className="font-Type_writer text-sm mb-4 max-w-2xl mx-auto text-muted-foreground">
           Discover the power of V4Fluffy. Transform your business through smart innovation.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 m">
           <Button onClick={openModal}>
             Get Started
           </Button>
