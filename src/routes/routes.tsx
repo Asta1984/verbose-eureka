@@ -4,12 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 // Import your page components
 import Home from '@/pages/Home';
-import {About} from '@/pages/About';
-import Whitepaper from '@/pages/Whitepaper';
-import Tokenomics from '@/pages/Tokenomics';
-import Docs from '@/pages/Docs';
-import FAQ from '@/pages/Faq';
-
 // Page transition variants
 const pageVariants = {
   initial: { 
@@ -73,31 +67,6 @@ const AppRoutes: React.FC = () => {
         <Route path="/" element={
           <Suspense fallback={<div>Loading...</div>}>
             <Home />
-          </Suspense>
-        } />
-        <Route path="/about" element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <About/>
-          </Suspense>
-        } />
-        <Route path="/whitepaper" element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Whitepaper />
-          </Suspense>
-        } />
-        <Route path="/tokenomics" element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Tokenomics />
-          </Suspense>
-        } />
-         <Route path="/docs" element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Docs />
-          </Suspense>
-        } />
-         <Route path="/faq" element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <FAQ />
           </Suspense>
         } />
         {/* 404 Route */}

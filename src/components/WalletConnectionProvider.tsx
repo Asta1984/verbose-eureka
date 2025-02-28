@@ -31,10 +31,7 @@ export const WalletConnectionProvider: React.FC<WalletConnectionProviderProps> =
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider 
-        wallets={wallets} 
-        autoConnect
-      >
+      <WalletProvider  wallets={wallets} autoConnect>
         <WalletModalProvider>{children}</WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
