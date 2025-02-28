@@ -2,12 +2,13 @@ import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AppRoutes from './routes/routes';
 import { WalletConnectionProvider } from './components/WalletConnectionProvider';
-
+import { ThemeProvider } from './components/ui/theme-provider';
 
 
 function App() {
   return (
-    <WalletConnectionProvider>
+    <ThemeProvider>
+      <WalletConnectionProvider> 
       <BrowserRouter>
         <div className="App">
           <Navbar />
@@ -15,6 +16,7 @@ function App() {
         </div>
       </BrowserRouter>
     </WalletConnectionProvider>
+  </ThemeProvider>
   );
 }
 
