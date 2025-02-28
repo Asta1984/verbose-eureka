@@ -9,7 +9,7 @@ const products = [
   {
     id: "1",
     name: "Product One",
-    price: 10,
+    price: 1,
     category: "Category A",
     image: "/api/placeholder/80/80",
     color: "Blue",
@@ -17,10 +17,18 @@ const products = [
   {
     id: "2",
     name: "Product Two",
-    price: 20,
+    price: 2,
     category: "Category B",
     image: "/api/placeholder/80/80",
     color: "Red",
+  },
+  {
+    id: "3",
+    name: "Product Three",
+    price: 3,
+    category: "Category C",
+    image: "/api/placeholder/80/80",
+    color: "Green",
   },
   // Add more products as needed
 ];
@@ -32,9 +40,9 @@ export default function Hero() {
   return (
     <ThemeProvider>
       <PaymentProvider merchantWallet={MERCHANT_WALLET}>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto mt-28">
             <header className="mb-8 text-center">
-              <h1 className="text-3xl font-bold tracking-tight">D-Pay Store</h1>
+              <h1 className="text-3xl font-OnlinePrivileges tracking-tight">D-Pay Store</h1>
               <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
                 Pay with any token - Merchant receives USDC
               </p>
