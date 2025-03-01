@@ -13,6 +13,10 @@ interface TokenAccount {
   decimals: number;
 }
 
+interface PaymentButtonProps {
+  cartTotal?: number;
+}
+
 // Token metadata with proper indexing type
 const TOKEN_METADATA: Record<string, { name: string; symbol: string; decimals: number }> = {
   "EPjFWdd5AufqSSqeM2qZ7x9mSLRF2tdTkVo4YafQwXb": { name: "USD Coin", symbol: "USDC", decimals: 6 },
@@ -20,7 +24,7 @@ const TOKEN_METADATA: Record<string, { name: string; symbol: string; decimals: n
   // Add more commonly used tokens as needed
 };
 
-const PaymentButton = () => {
+const PaymentButton = ({ cartTotal = 0 }: PaymentButtonProps) => {
   const { processPayment, connectWallet, connected } = useMerchantConfig();
   const wallet = useWallet();
   const { connection } = useConnection();
@@ -104,8 +108,8 @@ const PaymentButton = () => {
 
     setProcessing(true);
     try {
-      // For demo, use a fixed amount of 0.1 SOL equivalent
-      const amount = 0.1;
+      // Use the cart total passed as prop instead of hardcoded value
+      const amount = cartTotal;
       const tokenMint = selectedToken !== "native" ? selectedToken : undefined;
       
       const txid = await processPayment(amount, tokenMint);
@@ -177,7 +181,7 @@ const PaymentButton = () => {
           "Loading Tokens..."
         ) : (
           <>
-            Pay with {walletTokens.find(t => t.mint === selectedToken)?.symbol || "Token"}
+            Pay {cartTotal.toFixed(2)} {walletTokens.find(t => t.mint === selectedToken)?.symbol || "Token"}
             <CreditCard className="w-4 h-4" />
           </>
         )}

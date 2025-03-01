@@ -1,6 +1,3 @@
-"use client";
-
-import { ThemeProvider } from "../components/ui/theme-provider";
 import { InteractiveCheckout } from "@/components/ui/interactive-checkout";
 import { PaymentProvider } from "@/providers/PaymentProvider";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -40,7 +37,6 @@ export default function Hero() {
   
 
   return (
-    <ThemeProvider>
       <PaymentProvider 
         merchantWallet={MERCHANT_WALLET}
       >
@@ -62,6 +58,5 @@ export default function Hero() {
           <InteractiveCheckout products={products} />
         </div>
       </PaymentProvider>
-    </ThemeProvider>
   );
 }

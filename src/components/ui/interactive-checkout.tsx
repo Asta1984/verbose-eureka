@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Minus, Plus, ShoppingCart, X, CreditCard } from "lucide-react";
@@ -314,8 +312,8 @@ export function InteractiveCheckout({
                                     Sign transaction with Solana wallet.
                                 </DialogDescription>
                             </DialogHeader>                        
-                            <PaymentButton/>
-                        </DialogContent>
+                            <PaymentButton cartTotal={totalPrice}/>
+                          </DialogContent>
                         </Dialog>
                     </motion.div>
                 </motion.div>

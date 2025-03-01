@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AppRoutes from './routes/routes';
 import { WalletConnectionProvider } from '../src/providers/WalletConnectionProvider';
-import { ThemeProvider } from './components/ui/theme-provider';
+import { ThemeProvider } from './providers/theme-provider';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 
@@ -15,7 +15,6 @@ function App() {
           <Navbar />
           <AppRoutes />
         </div>
-
       </BrowserRouter>
     </WalletConnectionProvider>
   </ThemeProvider>
