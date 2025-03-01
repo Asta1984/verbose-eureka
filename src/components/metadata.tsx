@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection} from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import { useWallet } from '@solana/wallet-adapter-react';
 

@@ -7,9 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Img } from "react-image";
 import { cn } from "@/components/lib/utils";
 import NumberFlow from "@number-flow/react";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dotted-dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dotted-dialog"
 import { ThemeToggle } from "./theme-toggle";
-import WalletDashboard from "../demo";
 
 
 interface Product {
