@@ -1,17 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Minus, Plus, ShoppingCart, X, CreditCard, RefreshCw, Check } from "lucide-react";
+import { Minus, Plus, ShoppingCart, X, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Img } from "react-image";
 import { cn } from "@/components/lib/utils";
 import NumberFlow from "@number-flow/react";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dotted-dialog"
-import { TokenDropdown } from "../TokenSelectionDropdown";
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { ThemeToggle } from "./theme-toggle";
-import { useCryptoPayment, PaymentStatus, COMMON_TOKENS } from "../../hooks/payment";
+import WalletDashboard from "../demo";
+
 
 interface Product {
     id: string;
@@ -28,8 +27,8 @@ interface CartItem extends Product {
 
 interface InteractiveCheckoutProps {
     products?: Product[];
-    merchantWallet?: string;
 }
+
 
 const defaultProducts: Product[] = [
     {
@@ -58,26 +57,11 @@ const defaultProducts: Product[] = [
     },
 ];
 
+
 export function InteractiveCheckout({
     products = defaultProducts,
-    merchantWallet = "EWf8BvieKPWmW2CLpKGNxpUinDDDvZWcTgCfESZ4Kc1C", // Replace with actual merchant wallet
 }: InteractiveCheckoutProps) {
     const [cart, setCart] = useState<CartItem[]>([]);
-    const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
-    
-    // Initialize payment hooks
-    const {
-        selectedToken,
-        setSelectedToken,
-        status,
-        processPayment,
-        txSignature,
-        expectedUsdcAmount,
-        isWalletConnected
-    } = useCryptoPayment({
-        walletAddress: merchantWallet,
-        rpcUrl: 'https://solana-devnet.g.alchemy.com/v2/L_rlJ0gqzjP92QrIXlQz9u2v-dO-ryNN'
-    });
 
     const addToCart = (product: Product) => {
         setCart((currentCart) => {
@@ -120,58 +104,6 @@ export function InteractiveCheckout({
         (sum, item) => sum + item.price * item.quantity,
         0
     );
-    
-    const handlePayment = async () => {
-        if (isWalletConnected) {
-            await processPayment(totalPrice);
-        } else {
-            alert("Please connect your wallet first");
-        }
-    };
-    
-    // Display payment status message
-    const getPaymentStatusMessage = () => {
-        switch (status) {
-            case PaymentStatus.PROCESSING:
-                return (
-                    <div className="flex items-center gap-2 text-amber-500">
-                        <RefreshCw className="w-4 h-4 animate-spin" />
-                        <span>Processing payment...</span>
-                    </div>
-                );
-            case PaymentStatus.SUCCESS:
-                return (
-                    <div className="flex flex-col gap-2">
-                        <div className="flex items-center gap-2 text-green-500">
-                            <Check className="w-4 h-4" />
-                            <span>Payment successful!</span>
-                        </div>
-                        <div className="text-xs text-zinc-500">
-                            <a 
-                                href={`https://explorer.solana.com/tx/${txSignature}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="underline"
-                            >
-                                View transaction
-                            </a>
-                        </div>
-                        <div className="text-xs text-zinc-500">
-                            <span>Merchant received: {(Number(expectedUsdcAmount) / 1000000).toFixed(2)} USDC</span>
-                        </div>
-                    </div>
-                );
-            case PaymentStatus.ERROR:
-                return (
-                    <div className="flex items-center gap-2 text-red-500">
-                        <X className="w-4 h-4" />
-                        <span>Payment failed. Please try again.</span>
-                    </div>
-                );
-            default:
-                return null;
-        }
-    };
 
     return (
         <div className="w-full max-w-4xl mx-auto">
@@ -369,108 +301,29 @@ export function InteractiveCheckout({
                                 <NumberFlow value={totalPrice} />
                             </motion.span>
                         </div>
-                        <Dialog open={paymentDialogOpen} onOpenChange={setPaymentDialogOpen}>
+                        <Dialog>
                           <DialogTrigger asChild>
-                            <Button 
-                                size="sm" 
-                                className="w-full gap-2"
-                                disabled={totalItems === 0}
-                            >
-                                <CreditCard className="w-4 h-4" />
-                                Checkout
-                            </Button>
+                            <Button size="sm" className="w-full gap-2">
+                            <CreditCard className="w-4 h-4" />
+                                Checkout</Button>
                           </DialogTrigger>
                           <DialogContent className="sm:max-w-[425px]">
                             <DialogHeader>
-                                <DialogTitle>Crypto Payment</DialogTitle>
+                                <DialogTitle>D-Pay</DialogTitle>
                                 <DialogDescription>
-                                    Pay with crypto - Merchant receives USDC
+                                    Sign transaction with Solana wallet.
                                 </DialogDescription>
-                            </DialogHeader>
-                            
-                            <div className="py-4 space-y-4">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                                        Select payment token
-                                    </label>
-                                    <TokenDropdown 
-                                        selectedToken={selectedToken}
-                                        onSelectToken={setSelectedToken}
-                                    />
-                                </div>
-                                
-                                <div className="p-3 rounded-md bg-zinc-50 dark:bg-zinc-800/50">
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-zinc-500 dark:text-zinc-400">Amount:</span>
-                                        <span className="font-medium">${totalPrice.toFixed(2)}</span>
-                                    </div>
-                                    <div className="flex justify-between text-sm mt-1">
-                                        <span className="text-zinc-500 dark:text-zinc-400">Payment:</span>
-                                        <span className="font-medium">
-                                            {totalPrice} {selectedToken.symbol}
-                                        </span>
-                                    </div>
-                                    <div className="flex justify-between text-sm mt-1">
-                                        <span className="text-zinc-500 dark:text-zinc-400">Merchant receives:</span>
-                                        <span className="font-medium">USDC via Jupiter Swap</span>
-                                    </div>
-                                </div>
-                                
-                                {status !== PaymentStatus.IDLE && (
-                                    <div className="p-3 rounded-md bg-zinc-50 dark:bg-zinc-800/50">
-                                        {getPaymentStatusMessage()}
-                                    </div>
-                                )}
-                            </div>
-                            
-                            <DialogFooter className="flex flex-col gap-3">
-                                {!isWalletConnected && (
-                                    <WalletMultiButton className="w-full" />
-                                )}
-                                
-                                {isWalletConnected && status === PaymentStatus.IDLE && (
-                                    <Button 
-                                        className="w-full gap-2"
-                                        onClick={handlePayment}
-                                    >
-                                        <CreditCard className="w-4 h-4" />
-                                        Pay {totalPrice} {selectedToken.symbol}
-                                    </Button>
-                                )}
-                                
-                                {status === PaymentStatus.SUCCESS && (
-                                    <Button 
-                                        className="w-full"
-                                        variant="outline"
-                                        onClick={() => {
-                                            setPaymentDialogOpen(false);
-                                            setCart([]);
-                                        }}
-                                    >
-                                        Close
-                                    </Button>
-                                )}
-                                
-                                {status === PaymentStatus.ERROR && (
-                                    <Button 
-                                        className="w-full"
-                                        variant="outline"
-                                        onClick={() => {
-                                            // Reset payment state
-                                            window.location.reload();
-                                        }}
-                                    >
-                                        Try Again
-                                    </Button>
-                                )}
-                            </DialogFooter>
+                            </DialogHeader>                        
+                            <Button className="w-full gap-2">
+                                Pay <CreditCard className="w-4 h-4"  />
+                            </Button>
                         </DialogContent>
                         </Dialog>
                     </motion.div>
                 </motion.div>
             </div>
             <div className="flex items-center justify-center p-10">
-                <ThemeToggle />
+            <ThemeToggle />
             </div>
         </div>
     );

@@ -8,26 +8,26 @@ import { PaymentProvider } from "@/providers/PaymentProvider";
 const products = [
   {
     id: "1",
-    name: "Product One",
+    name: "Air Max 90",
     price: 1,
-    category: "Category A",
-    image: "/api/placeholder/80/80",
+    category: "Running",
+    image: "https://ferf1mheo22r9ira.public.blob.vercel-storage.com/shoes-d2GWFGnVlkkUneRD3x2xDbUVHO1qMp",
     color: "Blue",
   },
   {
     id: "2",
-    name: "Product Two",
+    name: "Asics Gel-4B+",
     price: 2,
-    category: "Category B",
-    image: "/api/placeholder/80/80",
+    category: "Performance",
+    image: "https://ferf1mheo22r9ira.public.blob.vercel-storage.com/shoes-d2GWFGnVlkkUneRD3x2xDbUVHO1qMp",
     color: "Red",
   },
   {
     id: "3",
-    name: "Product Three",
+    name: "Reebok Classic",
     price: 3,
-    category: "Category C",
-    image: "/api/placeholder/80/80",
+    category: "Sneaker",
+    image: "https://ferf1mheo22r9ira.public.blob.vercel-storage.com/shoes-d2GWFGnVlkkUneRD3x2xDbUVHO1qMp",
     color: "Green",
   },
   // Add more products as needed
@@ -35,7 +35,7 @@ const products = [
 
 export default function Hero() {
   // Replace with your actual merchant wallet address
-  const MERCHANT_WALLET = "Your_Merchant_Wallet_Address";
+  const MERCHANT_WALLET = "EWf8BvieKPWmW2CLpKGNxpUinDDDvZWcTgCfESZ4Kc1C";
   
   return (
     <ThemeProvider>
@@ -48,10 +48,11 @@ export default function Hero() {
               </p>
             </header>
             
-            <InteractiveCheckout products={products} merchantWallet={MERCHANT_WALLET} />
+            <InteractiveCheckout products={products}/>
           </div>
       </PaymentProvider>
     </ThemeProvider>
+
 
   );
 }

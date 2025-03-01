@@ -21,6 +21,13 @@ export default function Navbar() {
     };
   }, []);
 
+  const navItems = [
+    { 
+      to: "/dashboard", 
+      label: "Dashboard",
+      isActive: location.pathname === "/dashboard"
+    }
+  ];
   
 
   // Framer Motion animation variants
@@ -72,6 +79,22 @@ export default function Navbar() {
           <span className="font-OnlinePrivileges text-foreground group-hover:text-cyan-500 transition-colors duration-300">
             DPay</span>
         </Link>
+                {/* Desktop Navigation */}
+                <div className="hidden md:flex space-x-6 items-center">
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className={`text-sm font-semibold transition-all duration-300 ${
+                item.isActive 
+                  ? 'text-primary' 
+                  : 'text-muted-foreground hover:text-cyan-500 hover:scale-105'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
 
         {/* Desktop Wallet Connection */}
         <div className="hidden md:block ">

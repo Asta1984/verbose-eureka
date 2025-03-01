@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 // Import your page components
 import Home from '@/pages/Home';
+import Dashboard from '../pages/Dashboard';
 // Page transition variants
 const pageVariants = {
   initial: { 
@@ -67,6 +68,11 @@ const AppRoutes: React.FC = () => {
         <Route path="/" element={
           <Suspense fallback={<div>Loading...</div>}>
             <Home />
+          </Suspense>
+        } />
+        <Route path="/dashboard" element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <Dashboard />
           </Suspense>
         } />
         {/* 404 Route */}

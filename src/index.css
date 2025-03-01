@@ -187,3 +187,14 @@ button:focus,
 button:focus-visible {
   outline-offset: 2px;
 }
+
+select {
+  background-color: transparent;
+  color: var(--primary); /* Ensure text is visible */
+}
+
+option {
+  background-color: rgba(0, 0, 0, 0.8); /* Dark transparent background */
+  color: var(--primary-foreground); /* Make sure the text is visible */
+}
+
