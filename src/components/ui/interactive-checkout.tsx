@@ -9,6 +9,7 @@ import { cn } from "@/components/lib/utils";
 import NumberFlow from "@number-flow/react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dotted-dialog"
 import { ThemeToggle } from "./theme-toggle";
+import PaymentButton from "@/hooks/merchant_config";
 
 
 interface Product {
@@ -313,9 +314,7 @@ export function InteractiveCheckout({
                                     Sign transaction with Solana wallet.
                                 </DialogDescription>
                             </DialogHeader>                        
-                            <Button className="w-full gap-2">
-                                Pay <CreditCard className="w-4 h-4"  />
-                            </Button>
+                            <PaymentButton/>
                         </DialogContent>
                         </Dialog>
                     </motion.div>

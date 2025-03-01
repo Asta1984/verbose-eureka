@@ -36,23 +36,21 @@ const products = [
 export default function Hero() {
   // Replace with your actual merchant wallet address
   const MERCHANT_WALLET = "EWf8BvieKPWmW2CLpKGNxpUinDDDvZWcTgCfESZ4Kc1C";
-  
+
   return (
     <ThemeProvider>
       <PaymentProvider merchantWallet={MERCHANT_WALLET}>
-          <div className="max-w-4xl mx-auto mt-28">
-            <header className="mb-8 text-center">
-              <h1 className="text-3xl font-OnlinePrivileges tracking-tight">D-Pay Store</h1>
-              <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
-                Pay with any token - Merchant receives USDC
-              </p>
-            </header>
-            
-            <InteractiveCheckout products={products}/>
-          </div>
+        <div className="max-w-4xl mx-auto mt-28">
+          <header className="mb-8 text-center">
+            <h1 className="text-3xl font-OnlinePrivileges tracking-tight">D-Pay Store</h1>
+            <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
+              Pay with any token - Merchant receives USDC
+            </p>
+          </header>
+          
+          <InteractiveCheckout products={products} />
+        </div>
       </PaymentProvider>
     </ThemeProvider>
-
-
   );
 }
