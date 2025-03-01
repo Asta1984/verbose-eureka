@@ -22,7 +22,7 @@ body {
 :root:not(.dark) body {
   background: radial-gradient(circle at center, hsl(187, 100%, 72%), hsl(66, 88%, 77%), hsl(0, 0%, 100%));
   background-size: 150% 300%;
-  /*animation: gradientMove 15s ease infinite;*/
+  animation: gradientMove 15s ease infinite;
 }
 
 @keyframes gradientMove {
