@@ -20,7 +20,7 @@ import {
   import dotenv from "dotenv";
   dotenv.config();
   
-  const NETWORK = "https://solana-devnet.g.alchemy.com/v2/L_rlJ0gqzjP92QrIXlQz9u2v-dO-ryNN";
+  const NETWORK = "https://solana-mainnet.g.alchemy.com/v2/L_rlJ0gqzjP92QrIXlQz9u2v-dO-ryNN";
   const connection = new Connection(NETWORK, "confirmed");
   
   // Merchant Wallet (Receiving USDC)

@@ -7,8 +7,9 @@ import { cn } from "@/components/lib/utils";
 import NumberFlow from "@number-flow/react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dotted-dialog"
 import { ThemeToggle } from "./theme-toggle";
-import PaymentButton from "@/hooks/merchant_config";
+import React, { Suspense } from "react";
 
+const PaymentPage = React.lazy(() => import("../../service/Payment_service"));
 
 interface Product {
     id: string;
@@ -26,6 +27,7 @@ interface CartItem extends Product {
 interface InteractiveCheckoutProps {
     products?: Product[];
 }
+
 
 
 const defaultProducts: Product[] = [
@@ -311,9 +313,12 @@ export function InteractiveCheckout({
                                 <DialogDescription>
                                     Sign transaction with Solana wallet.
                                 </DialogDescription>
-                            </DialogHeader>                        
-                            <PaymentButton cartTotal={totalPrice}/>
-                          </DialogContent>
+                            </DialogHeader>
+                            <Suspense fallback={<p>Loading Payment Page...</p>}>
+  <PaymentPage totalPrice={totalPrice} />
+</Suspense>
+
+                        </DialogContent>
                         </Dialog>
                     </motion.div>
                 </motion.div>

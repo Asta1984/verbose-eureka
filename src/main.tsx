@@ -3,8 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import "@/styles/animations.css"
-import {Buffer} from 'buffer';
-window.Buffer = Buffer;
+import { Buffer } from 'buffer';
+
+if (!window.Buffer) {
+  window.Buffer = Buffer;
+}
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

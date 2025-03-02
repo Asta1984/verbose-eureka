@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
+  define: {
+    'global': {},
+  },
   plugins: [react()],
   resolve: {
     alias: {
@@ -10,7 +13,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion'],
+    include: ['buffer','react', 'react-dom', 'framer-motion'],
   },
   build: {
     commonjsOptions: {
