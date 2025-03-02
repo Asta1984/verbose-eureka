@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Connection} from '@solana/web3.js';
+import { Connection } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import { useWallet } from '@solana/wallet-adapter-react';
-
 
 interface TokenInfo {
   mint: string;
@@ -133,15 +132,15 @@ const WalletPortfolio: React.FC<WalletPortfolioProps> = ({ rpcEndpoint }) => {
 
   if (!connected) {
     return (
-      <div className="p-6 text-center border rounded-lg">
-        <p className="text-lg">Connect your wallet to view your portfolio</p>
+      <div className="p-3 sm:p-6 text-center border rounded-lg">
+        <p className="text-base sm:text-lg">Connect your wallet to view your portfolio</p>
       </div>
     );
   }
 
   if (loading) {
     return (
-      <div className="p-6 text-center border rounded-lg">
+      <div className="p-3 sm:p-6 text-center border rounded-lg">
         <p>Loading wallet data...</p>
       </div>
     );
@@ -149,52 +148,64 @@ const WalletPortfolio: React.FC<WalletPortfolioProps> = ({ rpcEndpoint }) => {
 
   if (error) {
     return (
-      <div className="p-6 text-center border rounded-lg bg-red-50">
-        <p className="text-red-500">Error: {error}</p>
+      <div className="p-3 sm:p-6 text-center border rounded-lg bg-red-50">
+        <p className="text-red-500 text-sm sm:text-base">Error: {error}</p>
       </div>
     );
   }
 
   return (
-    <div className="p-6 border rounded-lg">
-      <h2 className="text-xl font-bold mb-4">Your Wallet Portfolio</h2>
+    <div className="p-3 sm:p-6 border rounded-lg">
+      <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Your Wallet Portfolio</h2>
       
-      <div className="mb-6 p-4 bg-transparent rounded-lg">
-        <div className="flex items-center justify-between">
+      <div className="mb-4 sm:mb-6 p-2 sm:p-4 bg-transparent rounded-lg">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
           <div>
-            <p className="text-sm text-primary">Wallet Address</p>
-            <p className="font-mono">{publicKey?.toBase58()}</p>
+            <p className="text-xs sm:text-sm text-primary">Wallet Address</p>
+            <p className="font-mono text-xs sm:text-base break-all">{publicKey?.toBase58()}</p>
           </div>
-          <div className="text-right">
-            <p className="text-sm text-primary">SOL Balance</p>
-            <p className="font-bold text-xl">{solBalance?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 })} SOL</p>
+          <div className="sm:text-right mt-2 sm:mt-0">
+            <p className="text-xs sm:text-sm text-primary">SOL Balance</p>
+            <p className="font-bold text-lg sm:text-xl">{solBalance?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 })} SOL</p>
           </div>
         </div>
       </div>
       
-      <h3 className="text-lg font-semibold mb-3">Token Balances ({tokens.length})</h3>
+      <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">Token Balances ({tokens.length})</h3>
       
       {tokens.length === 0 ? (
-        <p className="text-center py-4 text-primary">No tokens found in this wallet</p>
+        <p className="text-center py-2 sm:py-4 text-primary text-sm sm:text-base">No tokens found in this wallet</p>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           {tokens.map((token) => (
-            <div key={token.mint} className="p-3 border rounded-lg flex items-center justify-between">
-              <div className="flex items-center space-x-3">
+            <div key={token.mint} className="p-2 sm:p-3 border rounded-lg flex items-center justify-between">
+              <div className="flex items-center space-x-2 sm:space-x-3">
                 {token.logo ? (
-                  <img src={token.logo} alt={token.symbol} className="w-8 h-8 rounded-full" onError={(e) => (e.currentTarget.src = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/solana/info/logo.png')} />
+                  <img 
+                    src={token.logo} 
+                    alt={token.symbol} 
+                    className="w-6 h-6 sm:w-8 sm:h-8 rounded-full" 
+                    onError={(e) => (e.currentTarget.src = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/solana/info/logo.png')} 
+                  />
                 ) : (
-                  <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-accent rounded-full flex items-center justify-center">
                     <span className="text-xs">{token.symbol?.charAt(0) || '?'}</span>
                   </div>
                 )}
                 <div>
-                  <p className="font-medium">{token.symbol || 'Unknown Token'}</p>
-                  <p className="text-xs text-primary">{token.name || token.mint.slice(0, 8) + '...'}</p>
+                  <p className="font-medium text-sm sm:text-base">{token.symbol || 'Unknown Token'}</p>
+                  <p className="text-xs text-primary truncate max-w-[120px] sm:max-w-[240px]">
+                    {token.name || token.mint.slice(0, 8) + '...'}
+                  </p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="font-bold">{token.uiAmount.toLocaleString(undefined, { minimumFractionDigits: token.decimals > 6 ? 2 : token.decimals, maximumFractionDigits: 6 })}</p>
+                <p className="font-bold text-sm sm:text-base">
+                  {token.uiAmount.toLocaleString(undefined, { 
+                    minimumFractionDigits: token.decimals > 6 ? 2 : token.decimals, 
+                    maximumFractionDigits: 6 
+                  })}
+                </p>
                 <p className="text-xs text-primary">
                   <a 
                     href={`https://explorer.solana.com/address/${token.mint}`} 

@@ -28,8 +28,6 @@ interface InteractiveCheckoutProps {
     products?: Product[];
 }
 
-
-
 const defaultProducts: Product[] = [
     {
         id: "1",
@@ -56,7 +54,6 @@ const defaultProducts: Product[] = [
         color: "White/Red",
     },
 ];
-
 
 export function InteractiveCheckout({
     products = defaultProducts,
@@ -106,8 +103,8 @@ export function InteractiveCheckout({
     );
 
     return (
-        <div className="w-full max-w-4xl mx-auto">
-            <div className="flex gap-6">
+        <div className="w-full max-w-4xl mx-auto p-4">
+            <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-1 space-y-3">
                     {products.map((product) => (
                         <motion.div
@@ -174,11 +171,11 @@ export function InteractiveCheckout({
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     className={cn(
-                        "w-80 flex flex-col",
+                        "w-full md:w-80 flex flex-col",
                         "p-4 rounded-xl",
                         "bg-white dark:bg-zinc-900",
                         "border border-zinc-200 dark:border-zinc-800",
-                        "sticky top-4",
+                        "sticky bottom-0 md:top-4",
                         "max-h-[32rem]"
                     )}
                 >
@@ -302,23 +299,25 @@ export function InteractiveCheckout({
                             </motion.span>
                         </div>
                         <Dialog>
-                          <DialogTrigger asChild>
-                            <Button size="sm" className="w-full gap-2">
-                            <CreditCard className="w-4 h-4" />
-                                Checkout</Button>
-                          </DialogTrigger>
-                          <DialogContent className="sm:max-w-[425px]">
-                            <DialogHeader>
-                                <DialogTitle>D-Pay</DialogTitle>
-                                <DialogDescription>
+                            <DialogTrigger asChild>
+                                <Button size="sm" className="w-full gap-2">
+                                <CreditCard className="w-4 h-4" />
+                                Checkout
+                                </Button>
+                            </DialogTrigger>
+                            <DialogContent className="w-[90%] max-w-[95vw] sm:max-w-[425px]">
+                                <DialogHeader>
+                                <DialogTitle className="text-lg sm:text-xl">D-Pay</DialogTitle>
+                                <DialogDescription className="text-sm sm:text-base">
                                     Sign transaction with Solana wallet.
                                 </DialogDescription>
-                            </DialogHeader>
-                            <Suspense fallback={<p>Loading Payment Page...</p>}>
-  <PaymentPage totalPrice={totalPrice} />
-</Suspense>
-
-                        </DialogContent>
+                                </DialogHeader>
+                                <Suspense fallback={<p className="text-center">Loading Payment Page...</p>}>
+                                <div className="p-4 sm:p-6">
+                                     <PaymentPage totalPrice={totalPrice} />
+                                </div>
+                                </Suspense>
+                            </DialogContent>
                         </Dialog>
                     </motion.div>
                 </motion.div>

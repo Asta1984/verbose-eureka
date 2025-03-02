@@ -37,7 +37,7 @@ export default function Hero() {
 
   return (
         <WalletConnectionProvider>
-                 <div className="max-w-4xl mx-auto mt-28">
+          <div className="max-w-4xl mx-auto mt-28">
           <header className="mb-8 text-center">
             <h1 className="text-3xl font-OnlinePrivileges tracking-tight">D-Pay Store</h1>
             <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
